@@ -10,6 +10,7 @@ var users = require('./routes/users');
 var specialOffers = require('./routes/specialOffers');
 var destinations = require('./routes/destinations');
 var lifeOnBoardTopics = require('./routes/lifeOnBoardTopics');
+var trips = require('./routes/trips');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use('/api/users', users);
 app.use('/api/specialOffers', specialOffers);
 app.use('/api/destinations', destinations);
 app.use('/api/lifeOnBoardTopics', lifeOnBoardTopics);
+app.use('/api/trips', trips);
 app.use('/', routes);
 
 // catch 404 and forward to error handler
