@@ -5,6 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://127.0.0.1/test');
+
+var models = require('./models/models');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var specialOffers = require('./routes/specialOffers');
