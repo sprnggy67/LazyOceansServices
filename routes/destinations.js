@@ -37,7 +37,7 @@ var defaultDestinations = [
     },
     {
         id:"005",
-        name: "Tranatlantic Routes",
+        name: "Tranatlantic",
         description: 'The Atlantic Ocean is the second largest of the worlds oceanic divisions, following the Pacific Ocean.',
         primary: true,
         thumbnail: 'http://dummyimage.com/400x200/cccccc/888888.png'
