@@ -4,24 +4,38 @@ var mongoose = require('mongoose');
 var Trip = mongoose.model('Trip');
 
 /* GET trips listing. */
-router.get('/', function(req, res, next) {
+router.get('/:tripId', function(req, res, next) {
+
     // Get the search parameters
+    var tripId = req.params.tripId;
+
+    // Create the search query
+    var query = {
+        id: tripId
+    };
+
+    // Perform the search
+    Trip.find(query, function(err, trips) {
+        if (err)
+            res.send(err);
+
+        return res.json(trips[0]);
+    });
+});
+
+router.get('/', function(req, res, next) {
+
+    // Get optional search parameters
     var destinationId = req.query.destinationId;
     var startDate = req.query.startDate;
 
     // Create the search query
     var query = {};
-    var validQuery = false;
     if (destinationId) {
-        validQuery = true;
         query.destinationId = destinationId;
     }
     if (startDate) {
-        validQuery = true;
         query.startDate = {$gte: startDate};
-    }
-    if (!validQuery) {
-        return res.status(400).send("Please specify a destinationId or startDate");
     }
 
     // Perform the search
